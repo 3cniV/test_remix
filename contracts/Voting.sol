@@ -67,13 +67,13 @@ contract Ballot {
         }
     }
 
-    function vote(uint proposalIndex) external {
+    function vote(uint proposalIndex1) external {
         voter storage sender = voters[msg.sender];
         require(sender.weight != 0, "Has no right to vote.");
         require(!sender.voted, "Already voted.");
         sender.voted = true;
-        sender.vote = proposalIndex;
-        proposals[proposalIndex].voteCount += sender.weight;
+        sender.vote = proposalIndex1;
+        proposals[proposalIndex1].voteCount += sender.weight;
     }
 
     function winningProposal() public view returns (uint winningProposal_) {
